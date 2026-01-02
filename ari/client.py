@@ -196,12 +196,12 @@ class Client(object):
                    for obj_field in obj_fields
                    if event.get(obj_field)}
             # If there's only one field in the schema, just pass that along
-if len(obj_fields) == 1:
-    if obj:
-        obj = list(obj.values())[0]
-    else:
-        obj = None
-    event_cb(obj, event, *args, **kwargs)
+            if len(obj_fields) == 1:
+                if obj:
+                    obj = list(obj.values())[0]
+                else:
+                    obj = None
+                event_cb(obj, event, *args, **kwargs)
 
         return self.on_event(event_type, extract_objects,
                              *args,
@@ -302,3 +302,4 @@ if len(obj_fields) == 1:
         """
         return self.on_object_event(event_type, fn, Sound, 'Sound',
                                     *args, **kwargs)
+
