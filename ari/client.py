@@ -7,7 +7,13 @@
 
 import json
 import logging
-import urlparse
+import sys
+if sys.version_info < (3, 0):
+    import urllib
+    import urlparse
+else:
+    import urllib.request as urllib
+    import urllib.parse as urlparse
 import swaggerpy.client
 
 from ari.model import *

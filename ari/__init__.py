@@ -7,7 +7,13 @@
 
 import ari.client
 import swaggerpy.http_client
-import urlparse
+import sys
+if sys.version_info < (3, 0):
+    import urllib
+    import urlparse
+else:
+    import urllib.request as urllib
+    import urllib.parse as urlparse
 
 Client = client.Client
 
